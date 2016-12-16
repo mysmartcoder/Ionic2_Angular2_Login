@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Signup
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <form #signupForm="ngForm" novalidate>
+        <ion-list>
+
+            <ion-item>
+                <ion-label floating>First Name</ion-label>
+                <ion-input [(ngModel)]="signup.fname" name="fname" #fname="ngModel" type="text" value="" spellcheck="false" autocapitalize="off" required></ion-input>
+            </ion-item>
+            <p [hidden]="fname.valid || submitted == false" color="danger" padding-left>
+                First Name is required
+            </p>
+
+            <ion-item>
+                <ion-label floating>Last Name</ion-label>
+                <ion-input [(ngModel)]="signup.lname" name="lname" #lname="ngModel" type="text" value="" spellcheck="false" autocapitalize="off" required></ion-input>
+            </ion-item>
+            <p [hidden]="lname.valid || submitted == false" color="danger" padding-left>
+                Last Name is required
+            </p>
+
+            <ion-item>
+                <ion-label floating>Username</ion-label>
+                <ion-input [(ngModel)]="signup.username" name="username" #username="ngModel" type="text" value="" spellcheck="false" autocapitalize="off" required></ion-input>
+            </ion-item>
+            <p [hidden]="username.valid || submitted == false" color="danger" padding-left>
+                Username is required
+            </p>
+            <ion-item>
+                <ion-label floating>Password</ion-label>
+                <ion-input [(ngModel)]="signup.password" name="password" type="password" #password="ngModel" value="" required></ion-input>
+            </ion-item>
+            <p [hidden]="password.valid || submitted == false" color="danger" padding-left>
+                Password is required
+            </p>
+        </ion-list>
+    </form>
+    <div padding>
+        <button ion-button (click)="onSignup(signupForm)" type="submit" [disabled]="!signupForm.valid" block>Create</button>
+    </div>
+
+</ion-content>
