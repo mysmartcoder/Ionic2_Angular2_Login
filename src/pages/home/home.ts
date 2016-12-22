@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { NavController,AlertController } from 'ionic-angular';
 import { UserData } from '../../providers/user-data';
 import { LoginPage } from '../login/login';

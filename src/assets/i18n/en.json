@@ -1,0 +1,13 @@
+{
+    "login": {
+        "head": "Login",
+        "title": "Change language",
+        "value": "English",
+        "username": "Username",
+        "password": "Password",
+        "unmerror": "Username is required",
+        "pwderror": "Password is required",
+        "login": "Login",
+        "signup": "Signup"
+    }
+}

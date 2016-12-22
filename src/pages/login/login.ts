@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-
-import { NavController,AlertController,LoadingController   } from 'ionic-angular';
-
+import { NavController, AlertController, LoadingController   } from 'ionic-angular';
+import { TranslateService } from 'ng2-translate/src/translate.service';
 import { SignupPage } from '../signup/signup';
 import { UserData } from '../../providers/user-data';
 import { HomePage } from '../home/home';
@@ -9,15 +8,25 @@ import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'login.html'
+  templateUrl: 'login.html',
+  providers: [TranslateService]
 })
+
 export class LoginPage {
 
-login: {username?: string, password?: string} = {};
+login: {language? : string,username?: string, password?: string} = {};
   submitted = false;
+  constructor(public navCtrl: NavController, public userData: UserData,public alertCtrl: AlertController,public loadingCtrl: LoadingController,public translate: TranslateService) { 
+        
+        translate.addLangs(['en','ab']);
+        translate.setDefaultLang('en');
+          
+        let browserLang = translate.getBrowserLang();
+        translate.use(browserLang.match(/en|ab/) ? browserLang : 'en');
 
-  constructor(public navCtrl: NavController, public userData: UserData,public alertCtrl: AlertController,public loadingCtrl: LoadingController) { }
-  
+        
+
+  }
   onLogin(form) {
   this.submitted = true;    
    if (form.valid) {

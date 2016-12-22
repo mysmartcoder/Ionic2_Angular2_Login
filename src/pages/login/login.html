@@ -1,39 +1,89 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            <ion-icon name="log-in"></ion-icon> Login
+            <ion-icon name="log-in"></ion-icon> {{ 'login.head' | translate }}
         </ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
+    <!--<ion-item>
+        <ion-label>{{ 'login.TITLE' | translate }}</ion-label>
+    </ion-item>
+    
+    <ion-label>{{ 'login.TITLE' | translate }}</ion-label>
+    <ion-select #langSelect (change)="translate.use(langSelect.value)" [(ngModel)]="language">
+                <ion-option value='en'>English</ion-option>
+                <ion-option value='ab'>العربية</ion-option>              
+    </ion-select>
+
+    <ion-list>
+        <ion-item>
+            <ion-label>{{ 'login.TITLE' | translate }}</ion-label>
+            <ion-select #langSelect (change)="translate.use(langSelect.value)" [(ngModel)]="language">
+                <ion-option *ngFor="let lang of langs" value="lang" selected="lang === translate.currentLang">{{ 'login.Value' | translate }}</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+
+
+    <label>
+    {{ 'login.TITLE' | translate }}
+    <select #langSelect (change)="translate.use(langSelect.value)">
+      <option *ngFor="let lang of langs" [value]="lang" [selected]="lang === translate.currentLang">{{ 'login.Value' | translate }}</option>
+    </select>
+  </label>
+    <ion-label>{{ 'login.TITLE' | translate }}</ion-label>
+    <ion-select #langSelect (select)="stpSelect(langSelect.value)" [(ngModel)]="language">
+        <ion-option value='en'>English</ion-option>
+        <ion-option value='ab'>العربية</ion-option>
+    </ion-select>
+
+    <ion-label>{{ 'login.TITLE' | translate }}</ion-label>
+    <ion-select #langSelect (select)="langSelect.value" [(ngModel)]="language">
+        <ion-option value='en'>English</ion-option>
+        <ion-option value='ab'>العربية</ion-option>
+    </ion-select>-->
+
+
+    <label>
+        {{ 'login.title' | translate }}
+        <select #langSelect (change)="translate.use(langSelect.value)">
+          <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+        </select>
+      </label>
+
+
     <form #loginForm="ngForm" novalidate>
+
+
         <ion-list>
+
             <ion-item>
-                <ion-label floating>Username</ion-label>
+                <ion-label floating>{{ 'login.username' | translate }}</ion-label>
                 <ion-input [(ngModel)]="login.username" name="username" #username="ngModel" type="text" value="" spellcheck="false" autocapitalize="off" required></ion-input>
             </ion-item>
             <p [hidden]="username.valid || submitted == false" color="danger" padding-left>
-                Username is required
+                {{ 'login.unmerror' | translate }}
             </p>
 
             <ion-item>
-                <ion-label floating>Password</ion-label>
+                <ion-label floating>{{ 'login.password' | translate }}</ion-label>
                 <ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" value="" required></ion-input>
             </ion-item>
 
             <p [hidden]="password.valid || submitted == false" color="danger" padding-left>
-                Password is required
+                {{ 'login.pwderror' | translate }}
             </p>
         </ion-list>
 
         <ion-row responsive-sm>
             <ion-col>
-                <button ion-button (click)="onLogin(loginForm)" color="primary" [disabled]="!loginForm.valid" block>Login</button>
+                <button ion-button (click)="onLogin(loginForm)" color="primary" [disabled]="!loginForm.valid" block> {{ 'login.login' | translate }}</button>
             </ion-col>
             <ion-col>
-                <button ion-button (click)="onSignup()" color="light" block>Signup</button>
+                <button ion-button (click)="onSignup()" color="light" block> {{ 'login.signup' | translate }}</button>
             </ion-col>
         </ion-row>
     </form>

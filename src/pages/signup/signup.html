@@ -28,6 +28,14 @@
             </p>
 
             <ion-item>
+                <ion-label floating>EmailID</ion-label>
+                <ion-input [(ngModel)]="signup.email" name="email" #email="ngModel" type="email" value="" spellcheck="false" autocapitalize="off" required></ion-input>
+            </ion-item>
+            <p [hidden]="email.valid || submitted == false" color="danger" padding-left>
+                EmailID is required
+            </p>
+
+            <ion-item>
                 <ion-label floating>Username</ion-label>
                 <ion-input [(ngModel)]="signup.username" name="username" #username="ngModel" type="text" value="" spellcheck="false" autocapitalize="off" required></ion-input>
             </ion-item>
